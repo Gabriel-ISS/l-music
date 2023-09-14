@@ -10,10 +10,10 @@
 <body>
   <div class="player">
     <div class="details">
-      <div id="now-playing">PLAYING x OF y</div>
-      <div id="track-art"></div>
-      <div id="track-name">Track Name</div>
-      <div id="track-artist">Track Artist</div>
+      <div id="now-playing">-</div>
+      <div id="track-image"></div>
+      <div id="track-name">-</div>
+      <div id="track-artist">-</div>
     </div>
     <div class="buttons">
       <div id="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
@@ -22,7 +22,7 @@
     </div>
     <div class="slider_container">
       <div id="current-time">00:00</div>
-      <input type="range" min="1" max="100" value="0" id="seek-slider" onchange="seekTo()">
+      <input type="range" min="1" max="100" value="0" id="track-slider" onchange="setTime()">
       <div id="total-duration">00:00</div>
     </div>
     <div class="slider_container">
