@@ -1,9 +1,20 @@
 body {
-  background-color: lightgreen;
+  background-color: var(--bg-color);
   transition: background-color .5s;
 }
 
 button {
   background: none;
   border: none;
+}
+
+input:focus{
+  outline: 1px solid var(--primary-color);
+}
+
+input[type="text"]{
+  background-color: var(--bg-color2);
+  border-radius: .2rem;
+  color: var(--text-color);
+  padding: .5em;
 }
