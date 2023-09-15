@@ -1,0 +1,13 @@
+@import url('./elements.css');
+
+@import url('./main-menu.css');
+@import url('./track-list.css');
+@import url('./form.css');
+@import url('./player.css');
+
+
+:root {
+  --primary-color: orange;
+  --bg-color: black;
+  --bg-color2: #232323;
+}

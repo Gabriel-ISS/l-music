@@ -1,0 +1,9 @@
+body {
+  background-color: lightgreen;
+  transition: background-color .5s;
+}
+
+button {
+  background: none;
+  border: none;
+}

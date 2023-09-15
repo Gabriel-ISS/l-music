@@ -3,35 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Music Player</title>
+  <title>l-music</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="/styles/global.css">
+  <script type="module" src="/scripts/main.js" defer></script>
 </head>
 <body>
-  <div class="player">
-    <div class="details">
-      <div id="now-playing">-</div>
-      <div id="track-image"></div>
-      <div id="track-name">-</div>
-      <div id="track-artist">-</div>
-    </div>
-    <div class="buttons">
-      <div id="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
-      <div id="play-pause-track" onclick="playPauseTrack()"><i class="fa fa-play-circle fa-5x"></i></div>
-      <div id="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
-    </div>
-    <div class="slider_container">
-      <div id="current-time">00:00</div>
-      <input type="range" min="1" max="100" value="0" id="track-slider" onchange="setTime()">
-      <div id="total-duration">00:00</div>
-    </div>
-    <div class="slider_container">
-      <i class="fa fa-volume-down"></i>
-      <input type="range" min="1" max="100" value="99" id="volume-slider" onchange="setVolume()">
-      <i class="fa fa-volume-up"></i>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <div id="app"></div>
 </body>
 </html>

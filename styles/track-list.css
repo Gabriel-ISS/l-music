@@ -1,0 +1,13 @@
+.track {
+  display: flex;
+  flex-direction: row;
+}
+
+.track img {
+  max-width: 4rem;
+}
+
+.track div:first-child {
+  display: flex;
+  flex-direction: column;
+}

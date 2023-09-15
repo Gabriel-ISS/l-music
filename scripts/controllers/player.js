@@ -1,8 +1,9 @@
 /*
 Basado en https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
+
 */
 
-const $ = id => document.getElementById(id)
+import { $ } from '../libs/html-management.js'
 
 const $nowPlaying = $("now-playing");
 const $trackImage = $("track-image");
@@ -15,14 +16,21 @@ const $prevBtn = $("prev-track");
 
 const $trackSlider = $("track-slider");
 const $volumeSlider = $("volume-slider");
-const $currentTime = $("current-time");
+const $currTime = $("current-time");
 const $totalDuration = $("total-duration");
+
+$playPauseBtn.addEventListener('click', playPauseTrack);
+$nextBtn.addEventListener('click', nextTrack);
+$prevBtn.addEventListener('click', prevTrack);
+$trackSlider.addEventListener('change', setTrackTime)
+$volumeSlider.addEventListener('change', setVolume)
+
+const $audioController = document.createElement('audio');
 
 let trackIndex = 0;
 let isPlaying = false;
 let updateTimer;
 
-const $audioController = document.createElement('audio');
 
 const trackList = [
   {
@@ -56,7 +64,7 @@ function setBackgroundColor() {
 
 function loadTrack(trackIndex) {
   clearInterval(updateTimer)
-  resetValues()
+  resetTrack()
 
   const track = trackList[trackIndex]
 
@@ -73,8 +81,8 @@ function loadTrack(trackIndex) {
   setBackgroundColor()
 }
 
-function resetValues() {
-  $currentTime.innerHTML = "00:00"
+function resetTrack() {
+  $currTime.innerHTML = "00:00"
   $totalDuration.innerHTML = "00:00"
   $trackSlider.value = 0
 }
@@ -111,7 +119,7 @@ function prevTrack() {
   playTrack();
 }
 
-function setTime() {
+function setTrackTime() {
   const sliderTime = $audioController.duration * ($trackSlider.value / 100);
   $audioController.currentTime = sliderTime;
 }
@@ -128,16 +136,12 @@ function updatePlayerTime() {
   $trackSlider.value = currentTime * (100 / duration)
 
   const timeFormatter = time => time < 10 ? '0' + time : time
-  const time = {
-    current: {
-      minutes: timeFormatter(Math.floor(currentTime / 60)),
-      seconds: timeFormatter(Math.floor(currentTime - currentMinutes * 60))
-    },
-    total: {
-      minutes: timeFormatter(Math.floor(duration / 60)),
-      seconds: timeFormatter(Math.floor(duration - durationMinutes * 60))
-    }
-  }
-  $currentTime.textContent = time.current.minutes + ":" + time.current.seconds;
-  $totalDuration.textContent = time.total.minutes + ":" + time.total.seconds;
+  let currentMinutes = timeFormatter(Math.floor(currentTime / 60))
+  let currentSeconds = timeFormatter(Math.floor(currentTime - currentMinutes * 60))
+  let durationMinutes = timeFormatter(Math.floor(duration / 60))
+  let durationSeconds = timeFormatter(Math.floor(duration - durationMinutes * 60))
+
+  $currTime.textContent = currentMinutes + ":" + currentSeconds;
+  $totalDuration.textContent = durationMinutes + ":" + durationSeconds;
 }
+
