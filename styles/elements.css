@@ -8,6 +8,10 @@ button {
   border: none;
 }
 
+input {
+  border: none;
+}
+
 input:focus{
   outline: 1px solid var(--primary-color);
 }

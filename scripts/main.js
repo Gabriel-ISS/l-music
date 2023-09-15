@@ -5,7 +5,6 @@ const TEMPLATE_PATH = '../templates/'
 
 const $app = $('app')
 
-
 async function injectTemplates(...templates) {
   let html = ''
   for (const template of templates) {
@@ -13,11 +12,9 @@ async function injectTemplates(...templates) {
     try {
       const response = await fetch(path)
       if (!response.ok) {
-        console.log(response.status)
         return;
       }
       const templateHTML = await response.text()
-      console.log(templateHTML)
       html += templateHTML
     } catch (error) {
       console.log(error)

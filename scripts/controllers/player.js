@@ -1,6 +1,5 @@
 /*
 Basado en https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
-
 */
 
 import { $ } from '../libs/html-management.js'
@@ -56,10 +55,11 @@ const trackList = [
 loadTrack(trackIndex)
 
 function setBackgroundColor() {
+  /* Esto debería cambiar la imagen de fondo 
   let red = Math.floor(Math.random() * 256) + 64
   let green = Math.floor(Math.random() * 256) + 64
   let blue = Math.floor(Math.random() * 256) + 64
-  document.body.style.background = `rgb(${[red, green, blue].join(', ')})`
+  document.body.style.background = `rgb(${[red, green, blue].join(', ')})` */
 }
 
 function loadTrack(trackIndex) {

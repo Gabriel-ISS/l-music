@@ -6,10 +6,10 @@ const $trackList = $('track-list')
 let tracks;
 
 async function setTracks() {
-  tracks = await getPlaylist()
+  /* tracks = await getPlaylist(playlist)
   $trackList.innerHTML = tracks.reduce((html, track) => {
     html += Track(track, index)
-  }, '')
+  }, '') */
 }
 
 setTracks()
