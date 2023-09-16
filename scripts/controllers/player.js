@@ -4,7 +4,7 @@ Basado en https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
 
 import { $ } from '../libs/html-management.js'
 import store from '../store.js'
-import { updateSimplePlayer } from './simple-player.js';
+import { playPauseSP, updateSimplePlayer } from './simple-player.js';
 
 
 const $simplePlayer = $("simple-player")
@@ -64,9 +64,8 @@ export default function playerLoader(trackIndex) {
   updateTimer = setInterval(updatePlayerTime, 1000)
   $audioController.addEventListener("ended", nextTrack)
   setBackgroundColor()
-  
-  updateSimplePlayer(track)
 
+  updateSimplePlayer(track)
 }
 
 function resetTrack() {
@@ -84,12 +83,14 @@ export function playTrack() {
   $audioController.play()
   store.track.isPlaying = true
   $playPauseBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>'
+  playPauseSP(true)
 }
 
 function pauseTrack() {
   $audioController.pause()
   store.track.isPlaying = false
   $playPauseBtn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>'
+  playPauseSP(false)
 }
 
 function nextTrack() {

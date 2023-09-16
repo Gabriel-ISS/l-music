@@ -1,5 +1,6 @@
 .track {
   display: flex;
+  align-items: center;
   flex-direction: row;
   width: 100%;
   background-color: rgba(var(--bg-color-sprite),.5);
@@ -12,6 +13,7 @@
   background-image: url("https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250");
   position: relative;
   background-size: cover;
+  background-position: center;
 }
 
 #track-list::before{

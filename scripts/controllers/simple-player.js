@@ -1,7 +1,6 @@
 import { $, getTemplate, fillComponent } from '../libs/html-management.js'
 
 const $simplePlayerContainer = $('simple-player')
-const $startStopButton = $('start-stop-btn')
 
 const simplePlayer = await getTemplate('../../templates/components/simple-player')
 
@@ -10,10 +9,13 @@ export function updateSimplePlayer(track) {
   $simplePlayerContainer.innerHTML = fillComponent(simplePlayer, track)
 }
 
-export function changeIcon(playing) {
+export function playPauseSP(playing) {
+  const $playPauseButton = $('play-pause-icon')
+
   if (playing) {
-    $startStopButton.classList.replace('fa-play', 'fa-pause')
+    // TODO: fa-pause no anda
+    $playPauseButton.className = 'fa-solid fa-play'
   } else {
-    $startStopButton.classList.replace('fa-pause', 'fa-play')
+    $playPauseButton.className = 'fa-solid fa-play'
   }
 }
