@@ -1,8 +1,14 @@
-#form{
+#form {
     display: grid;
     width: calc(100% - 2rem);
     min-height: calc(100vh - var(--navbar-height));
     gap: 1.5em;
     margin: 1rem;
     align-content: start;
+}
+
+.input-group {
+    display: grid;
+    gap: 1.2em;
+    color: var(--primary-color);
 }

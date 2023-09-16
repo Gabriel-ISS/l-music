@@ -24,9 +24,10 @@
 }
 
 .playlist button {
-    border-radius: 10px;
-    height: 1.5em;
-    width: 1.5em;
+    border-radius: 50%;
+    height: .5in;
+    width: .5in;
+
     background-color: var(--secondary-color);
     display: grid;
     place-content: center;

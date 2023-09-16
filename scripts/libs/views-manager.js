@@ -13,7 +13,10 @@ const $simplePlayer = $('simple-player')
  */
 export async function moveToView(view, loader, $currentView = $(store.views.current), currentLoader = store.views.currentLoader) {
   const $toReplaceView = $currentView
+  console.log(loader, currentLoader)
   const $newView = await loader()
+
+  if (!$newView) throw new Error("New view loader returns undefined")
 
   // ensure display
   $toReplaceView.style.cssText = 'display: none;'
@@ -29,6 +32,10 @@ export async function moveToView(view, loader, $currentView = $(store.views.curr
   // update views
   store.views.prevLoader = currentLoader
   store.views.currentLoader = loader
-  store.views.prev = $currentView.getAttribute('id')
+
+  const currentView = $currentView.getAttribute('id')
+  if (currentView == VIEWS.main && currentView == VIEWS.playlist) {
+    store.views.prev = currentView
+  }
   store.views.current = view
 }

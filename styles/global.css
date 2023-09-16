@@ -5,6 +5,12 @@
 @import url('./form.css');
 @import url('./player.css');
 @import url('./simple-player.css');
+
+
+.fa-solid {
+  font-size: .3in;
+}
+
 .fa-arrow-left {
   margin-right: auto; 
 }
