@@ -22,6 +22,7 @@ export default function formLoader() {
 
 function AddPlaylistForm() {
   return createForm(
+    'Guardar playlist',
     ['Nombre de playlist *', 'name'],
     ['Link de imagen', 'image']
   )
@@ -29,6 +30,7 @@ function AddPlaylistForm() {
 
 function AddTrackForm() {
   return createForm(
+    'Guardar pista',
     ['Nombre de la pista *', 'name'],
     ['Artista', 'artist'],
     ['Album', 'album'],
@@ -37,10 +39,10 @@ function AddTrackForm() {
   )
 }
 
-function createForm(...fieldGroups) {
+function createForm(btnLabel, ...fieldGroups) {
   return fieldGroups.reduce((html, fieldGroup) => {
     const [title, field] = fieldGroup
     html += fillComponent(formGroup, { title, field })
     return html
-  }, '')
+  }, '') + `<button id="form-btn" type="submit">${btnLabel}</button>`
 }

@@ -7,14 +7,12 @@
   --bg-color2: #232323;
   --bg--color3: #ff5722;
   --text-color: #fff;
-  --bg-color-sprite:0,0,0;
+  --bg-color-sprite: 0, 0, 0;
   --navbar-height: 3.5rem;
- 
-
 }
 
-*{
-box-sizing: border-box; 
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -37,20 +35,13 @@ input {
   border: none;
 }
 
-input:focus{
+input:focus {
   outline: 1px solid var(--primary-color);
 }
 
-input[type="text"]{
-  background-color: var(--bg-color2);
-  border-radius: .2rem;
-  color: var(--text-color);
-  padding: .5em;
-}
-
 nav {
-  height: var(--navbar-height) ;
-  position: sticky; 
+  height: var(--navbar-height);
+  position: sticky;
   top: 0;
   border-bottom: var(--primary-color) solid 2px;
   backdrop-filter: blur(8px);
@@ -66,11 +57,11 @@ nav i {
   margin-right: 10px;
 }
 
-section{
+section {
   padding: 1rem;
 }
 
-span{
+span {
   color: var(--text-color);
   margin: .5em;
 }

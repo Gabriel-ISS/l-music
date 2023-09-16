@@ -7,7 +7,7 @@ import store from '../store.js'
 import { playPauseSP, updateSimplePlayer } from './simple-player.js';
 
 
-const $simplePlayer = $("simple-player")
+const $trackList = $("track-list")
 
 const $nowPlaying = $("now-playing");
 const $trackImage = $("track-image");
@@ -33,12 +33,9 @@ const $audioController = document.createElement('audio');
 
 let updateTimer;
 
-function setBackgroundColor() {
-  /* Esto debería cambiar la imagen de fondo 
-  let red = Math.floor(Math.random() * 256) + 64
-  let green = Math.floor(Math.random() * 256) + 64
-  let blue = Math.floor(Math.random() * 256) + 64
-  document.body.style.background = `rgb(${[red, green, blue].join(', ')})` */
+function setBackgroundColor(url) {
+  // TODO: sobrescrito por display none
+  $trackList.style.backgroundImage = `url("${url}")`
 }
 
 /** ⚠️ no retorna el envoltorio */
@@ -63,7 +60,7 @@ export default function playerLoader(trackIndex) {
 
   updateTimer = setInterval(updatePlayerTime, 1000)
   $audioController.addEventListener("ended", nextTrack)
-  setBackgroundColor()
+  setBackgroundColor(track.image)
 
   updateSimplePlayer(track)
 }
