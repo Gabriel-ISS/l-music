@@ -1,5 +1,5 @@
 import { getPlaylist } from '../libs/db-service.js'
-import {$} from '../libs/html-management.js'
+import {$, insertMany} from '../libs/html-management.js'
 
 const $trackList = $('track-list')
 
@@ -7,9 +7,8 @@ let tracks;
 
 async function setTracks() {
   /* tracks = await getPlaylist(playlist)
-  $trackList.innerHTML = tracks.reduce((html, track) => {
-    html += Track(track, index)
-  }, '') */
+  insertMany(Track, tracks, $trackList)
+   */
 }
 
 setTracks()
