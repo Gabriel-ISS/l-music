@@ -6,7 +6,8 @@ const dbPromise = fetch('/public/db.json')
 
 export async function getListOfPlaylist() {
   const db = await dbPromise
-  return db.map(pl => pl.name) 
+  // TODO: remover los tracks
+  return db 
 }
 
 export async function getPlaylist(playlistName) {

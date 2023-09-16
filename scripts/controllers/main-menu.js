@@ -22,8 +22,8 @@ async function setPlaylists() {
   insertMany(Playlist, playlists, $mainMenu, true)
 }
 
-function Playlist(name, index) {
-  return fillComponent(playlistTemplate, { name, index })
+function Playlist(data, index) {
+  return fillComponent(playlistTemplate, { ...data, index })
 }
 
 function removePlaylist(e, index) {
