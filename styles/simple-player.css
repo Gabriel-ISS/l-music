@@ -2,19 +2,21 @@
 #simple-player {
     position: fixed;
     bottom: 0;
-    width: 90%; /* Ocupa el ancho completo de la ventana */
-    background-color: #333; /* Color de fondo de la barra de navegación */
+    width: 90%; 
+    background-color: #333;
     display: flex;
     align-items: center;
     padding: 10px;
+    border-radius: 30px;
   }
   
   .circle {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background-color: #ff5722; 
     border-radius: 50%; 
     margin-right: 10px;
+    margin-left: 5px;
   }
   
   .text {
@@ -25,9 +27,11 @@
   .text span {
     margin: 0;
     color: #fff; 
+    margin-left: 30px;
   }
   
   .fa-play {
     font-size: 20px;
     color: #fff; 
+    margin-left: 70px;
   }
