@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin: 0;
 }
 
 .details {
@@ -15,7 +16,7 @@
 }
 
 #track-image {
-  margin: 25px;
+
   height: 250px;
   width: 250px;
   background-image: url("https://images.pexels.com/photos/262034/pexels-photo-262034.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
@@ -24,14 +25,16 @@
 }
 
 #now-playing {
-  font-size: 1rem;
+  font-size: .6rem;
 }
 
 #track-name {
+
   font-size: 1.8rem;
 }
 
 #track-artist {
+
   font-size: 1rem;
 }
 

@@ -5,6 +5,7 @@
   background-color: rgba(var(--bg-color-sprite),.5);
   z-index: 1;
   position: relative;
+  border: 1px var(--primary-color) solid;
 }
 
 #track-list{
@@ -27,6 +28,8 @@
 .track img {
   max-width: 4rem;
   aspect-ratio: 1;
+  border: 2px var(--primary-color) solid;
+
 }
 
 .track div:first-child {
