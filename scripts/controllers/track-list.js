@@ -1,28 +1,29 @@
 import { $, $all, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
-import { getPlaylist } from '../libs/db-service.js'
-//import { isPlaying, playTrack } from './player.js'
+import { playTrack } from './player.js'
+import { getPlaylist } from "../libs/db-service.js"
+import { state } from '../store.js'
 
 const $trackList = $('track-list')
 
 const trackTemplate = await getTemplate('../../templates/components/track')
 
-await setPlaylist()
+export default async function setPlaylist(index) {
+  const playlist = await getPlaylist(index)
+  insertMany(Track, playlist.tracks, $trackList, true)
 
-const $tracks = $all('.track')
-$tracks.forEach((track) => {
-  track.addEventListener('click', playTrack)
-})
+  const $tracks = $all('.track')
+  $tracks.forEach(track => {
+    track.addEventListener('click', loadAndPlayTrack)
+  })
 
-async function setPlaylist() {
-  const tracks = await getPlaylist()
-  console.log(tracks)
-  insertMany(Track, tracks, $trackList, true)
+  return playlist.tracks
 }
 
 function Track(data, index) {
   return fillComponent(trackTemplate, { ...data, index })
 }
 
-function playTrack(e) {
-  
+function loadAndPlayTrack() {
+  if (state.isPlaying) return;
+  //playTrack()
 }

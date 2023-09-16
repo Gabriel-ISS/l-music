@@ -10,7 +10,7 @@ export async function getListOfPlaylist() {
   return db 
 }
 
-export async function getPlaylist(playlistName) {
+export async function getPlaylist(index) {
   const db = await dbPromise
-  return db.find(pl => pl.name === playlistName)
+  return db[index]
 }

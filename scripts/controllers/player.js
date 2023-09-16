@@ -3,6 +3,7 @@ Basado en https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
 */
 
 import { $ } from '../libs/html-management.js'
+import { state } from '../store.js'
 
 const $nowPlaying = $("now-playing");
 const $trackImage = $("track-image");
@@ -26,33 +27,7 @@ $volumeSlider.addEventListener('change', setVolume)
 
 const $audioController = document.createElement('audio');
 
-export const state = {
-  trackIndex: 0,
-  isPlaying: false
-}
 let updateTimer;
-
-
-const trackList = [
-  {
-    name: "Night Owl",
-    artist: "Broke For Free",
-    image: "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-    path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
-  },
-  {
-    name: "Enthusiast",
-    artist: "Tours",
-    image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-    path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3"
-  },
-  {
-    name: "Shipping Lanes",
-    artist: "Chad Crouch",
-    image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-    path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
-  },
-]
 
 loadTrack(state.trackIndex)
 
@@ -68,7 +43,12 @@ function loadTrack(trackIndex) {
   clearInterval(updateTimer)
   resetTrack()
 
-  const track = trackList[trackIndex]
+  if (!state.tracks.length) {
+    console.info('Tracks not found')
+    return;
+  }
+
+  const track = state.tracks[trackIndex]
 
   $audioController.src = track.path
   $audioController.load()
@@ -76,7 +56,7 @@ function loadTrack(trackIndex) {
   $trackImage.style.backgroundImage = `url(${track.image})`
   $trackName.innerHTML = track.name
   $trackArtist.innerHTML = track.artist
-  $nowPlaying.innerHTML = `Reproduciendo pista ${trackIndex + 1} de ${trackList.length}`
+  $nowPlaying.innerHTML = `Reproduciendo pista ${trackIndex + 1} de ${state.tracks.length}`
 
   updateTimer = setInterval(updatePlayerTime, 1000)
   $audioController.addEventListener("ended", nextTrack)
@@ -94,7 +74,7 @@ function playPauseTrack() {
   else pauseTrack()
 }
 
-function playTrack() {
+export function playTrack() {
   $audioController.play()
   state.isPlaying = true
   $playPauseBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>'
@@ -107,7 +87,7 @@ function pauseTrack() {
 }
 
 function nextTrack() {
-  if (state.trackIndex < trackList.length - 1) state.trackIndex++;
+  if (state.trackIndex < state.tracks.length - 1) state.trackIndex++;
   else state.trackIndex = 0;
   loadTrack(state.trackIndex);
   playTrack();
@@ -116,7 +96,7 @@ function nextTrack() {
 function prevTrack() {
   if (state.trackIndex > 0)
     state.trackIndex -= 1;
-  else state.trackIndex = trackList.length;
+  else state.trackIndex = state.tracks.length;
   loadTrack(state.trackIndex);
   playTrack();
 }
