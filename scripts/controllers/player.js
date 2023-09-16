@@ -37,6 +37,7 @@ function setBackgroundColor() {
   document.body.style.background = `rgb(${[red, green, blue].join(', ')})` */
 }
 
+/** ⚠️ no retorna el envoltorio */
 export default function playerLoader(trackIndex) {
   clearInterval(updateTimer)
   resetTrack()

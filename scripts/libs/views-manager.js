@@ -1,7 +1,8 @@
+import { VIEWS } from '../constants.js';
 import store from '../store.js'
 import { $ } from './html-management.js';
 
-const $cover = $('cover')
+const $simplePlayer = $('simple-player')
 
 /**
  * Establece los cambios necesarios para el intercambio de vista
@@ -17,6 +18,13 @@ export async function moveToView(view, loader, $currentView = $(store.views.curr
   // ensure display
   $toReplaceView.style.cssText = 'display: none;'
   $newView.style.cssText = ''
+
+  // simple player toggle
+  if (view == VIEWS.player) {
+    $simplePlayer.style.cssText = 'display: none;'
+  } else if (VIEWS.player == store.views.current && store.track.isPlaying) {
+    $simplePlayer.style.cssText = ''
+  }
 
   // update views
   store.views.prevLoader = currentLoader

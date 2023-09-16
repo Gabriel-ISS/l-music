@@ -39,4 +39,5 @@ function loadAndPlayTrack(trackIndex) {
   if (store.track.isPlaying && trackIndex === currentTrack) return;
   if (trackIndex !== currentTrack) playerLoader(trackIndex);
   playTrack()
+  return $('player')
 }
