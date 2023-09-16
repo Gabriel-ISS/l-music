@@ -1,11 +1,12 @@
 .input-group{
     display: grid;
     gap: 1.2em;
+    color: var(--primary-color);
   }
   #prev-view , #add-something{
-    color:  var(--secondary-color);
+    color: var(--primary-color);
   }
   
   .download-arrow{
-    color:  var(--secondary-color);
+    color: var(--primary-color);
   }
