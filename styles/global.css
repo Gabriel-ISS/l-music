@@ -4,7 +4,7 @@
 @import url('./track-list.css');
 @import url('./form.css');
 @import url('./player.css');
-
+@import url('./simple-player.css');
 .fa-arrow-left {
   margin-right: auto; 
 }
