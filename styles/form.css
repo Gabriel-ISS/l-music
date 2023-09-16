@@ -1,5 +1,7 @@
 #form{
     display: grid;
+    display: none;
+    /* TODO: eliminar display: none; */
     width: calc(100% - 2rem);
     gap: 1.5em;
     margin: 1rem;
