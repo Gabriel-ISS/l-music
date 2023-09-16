@@ -18,6 +18,10 @@
     border-radius: .5rem;
 }
 
+.playlist h3{
+    color: var(--primary-color);
+}
+
 .playlist button {
     border-radius: 10px;
     height: 1.5em;
