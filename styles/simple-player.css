@@ -1,8 +1,8 @@
 
 #simple-player {
     position: fixed;
-    bottom: 0;
-    width: 90%; 
+    bottom: 1rem;
+    width: calc(100% - 2rem); 
     background-color: var(--bg-color);
     display: flex;
     align-items: center;

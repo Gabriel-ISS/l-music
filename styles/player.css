@@ -44,7 +44,7 @@
 #play-pause-track, #prev-track, #next-track {
   padding: 25px;
   opacity: 0.8;
-  color: var(--text-color);
+  color: var(--primary-color);
 
   /* Smoothly transition the opacity */
   transition: opacity .2s;
@@ -76,12 +76,12 @@
 
 #track-slider {
   width: 60%;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 #volume-slider {
   width: 30%;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 /* Modify the appearance of the slider thumb */
@@ -102,10 +102,12 @@
 
 #current-time, #total-duration {
   padding: 10px;
+  color: var(--primary-color);
 }
 
 i.fa-volume-down, i.fa-volume-up {
   padding: 10px;
+  color: var(--primary-color);
 }
 
 i.fa-play-circle, i.fa-pause-circle, i.fa-step-forward, i.fa-step-backward {
