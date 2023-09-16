@@ -1,7 +1,7 @@
 .player {
-  display: none;
+
   height: 95vh;
-  /* display: flex; */
+  display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -45,6 +45,7 @@
 #play-pause-track, #prev-track, #next-track {
   padding: 25px;
   opacity: 0.8;
+  color: var(--text-color);
 
   /* Smoothly transition the opacity */
   transition: opacity .2s;
@@ -76,10 +77,12 @@
 
 #track-slider {
   width: 60%;
+  background-color: var(--secondary-color);
 }
 
 #volume-slider {
   width: 30%;
+  background-color: var(--secondary-color);
 }
 
 /* Modify the appearance of the slider thumb */
