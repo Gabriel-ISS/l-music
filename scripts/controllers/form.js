@@ -10,11 +10,10 @@ export default function formLoader() {
   const currentView = store.views.current
   switch (currentView) {
     case VIEWS.main:
-      // insert playlist form
       $form.innerHTML = AddPlaylistForm()
       break;
-    case VIEWS.playlist:
-      //insert track form
+    case VIEWS.form:
+    default:
       $form.innerHTML = AddTrackForm()
       break;
   }

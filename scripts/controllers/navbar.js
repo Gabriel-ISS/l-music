@@ -23,6 +23,9 @@ function showPrevView() {
     case VIEWS.playlist:
       moveToView(VIEWS.main, mainMenuLoader)
       break;
+    case VIEWS.form:
+      moveToView(store.views.prev, store.views.prevLoader)
+      break;
     default:
       moveToView(store.views.prev, async () => await playlistLoader(store.playlist.index))
       break;
