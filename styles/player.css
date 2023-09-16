@@ -1,5 +1,5 @@
 #player {
-  min-height: calc(100vh - var(--navbar-height));
+  height: calc(100vh - var(--navbar-height));
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -28,11 +28,11 @@
 }
 
 #track-name {
-  font-size: 3rem;
+  font-size: 1.8rem;
 }
 
 #track-artist {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .buttons {

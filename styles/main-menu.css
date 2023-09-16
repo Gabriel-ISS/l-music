@@ -17,9 +17,11 @@
     display: grid;
     place-items: center;
     border-radius: .5rem;
+    position: relative;
 }
 
-.playlist h3{
+.playlist h2{
+    margin-bottom: 100px;
     color: var(--primary-color);
 }
 
@@ -31,4 +33,7 @@
     background-color: var(--secondary-color);
     display: grid;
     place-content: center;
+    position: absolute;
+    top: .5rem; 
+    right: .5rem;
 }
