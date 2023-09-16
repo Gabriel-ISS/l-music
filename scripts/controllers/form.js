@@ -1,9 +1,25 @@
 import { $, getTemplate, fillComponent } from '../libs/html-management.js'
 import store from '../store.js'
+import { VIEWS } from '../constants.js'
 
 const $form = $('form')
 
 const formGroup = await getTemplate('../../templates/components/form-group')
+
+export default function formLoader() {
+  const currentView = store.views.current
+  switch (currentView) {
+    case VIEWS.main:
+      // insert playlist form
+      $form.innerHTML = AddPlaylistForm()
+      break;
+    case VIEWS.playlist:
+      //insert track form
+      $form.innerHTML = AddTrackForm()
+      break;
+  }
+  return $form
+}
 
 function AddPlaylistForm() {
   return createForm(
@@ -22,27 +38,10 @@ function AddTrackForm() {
   )
 }
 
-function createForm(...fields) {
-  return fields.reduce((html, fieldGroup) => {
+function createForm(...fieldGroups) {
+  return fieldGroups.reduce((html, fieldGroup) => {
     const [title, field] = fieldGroup
     html += fillComponent(formGroup, { title, field })
     return html
   }, '')
-}
-
-export function showForm() {
-  console.log(store)
-  const currentView = store.views.current
-  switch (currentView) {
-    case 'main':
-      // insert playlist form
-      $form.innerHTML = AddPlaylistForm()
-      store.views.setNew('form')
-      break;
-    case 'playlist':
-      //insert track form
-      $form.innerHTML = AddTrackForm()
-      store.views.setNew('form')
-      break;
-  }
 }

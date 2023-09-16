@@ -29,8 +29,6 @@ const $audioController = document.createElement('audio');
 
 let updateTimer;
 
-loadTrack(store.track.index)
-
 function setBackgroundColor() {
   /* Esto debería cambiar la imagen de fondo 
   let red = Math.floor(Math.random() * 256) + 64
@@ -39,7 +37,7 @@ function setBackgroundColor() {
   document.body.style.background = `rgb(${[red, green, blue].join(', ')})` */
 }
 
-function loadTrack(trackIndex) {
+export default function playerLoader(trackIndex) {
   clearInterval(updateTimer)
   resetTrack()
 
@@ -89,7 +87,7 @@ function pauseTrack() {
 function nextTrack() {
   if (store.track.index < store.playlist.tracks.length - 1) store.track.index++;
   else store.track.index = 0;
-  loadTrack(store.track.index);
+  playerLoader(store.track.index);
   playTrack();
 }
 
@@ -97,7 +95,7 @@ function prevTrack() {
   if (store.track.index > 0)
     store.track.index -= 1;
   else store.track.index = store.playlist.tracks.length;
-  loadTrack(store.track.index);
+  playerLoader(store.track.index);
   playTrack();
 }
 

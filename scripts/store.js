@@ -1,4 +1,5 @@
-import setPlaylist from "./controllers/track-list.js"
+import playlistLoader from "./controllers/track-list.js"
+import {VIEWS} from './constants.js'
 
 export default {
   playlist: {
@@ -6,21 +7,13 @@ export default {
     tracks: []
   },
   views: {
-    current: 'main',
-    prev: 'main',
-    setNew(newView) {
-      this.prev = this.current
-      this.current = newView
-    },
-    prevLoader: () => void 0
+    prev: VIEWS.main,
+    current: VIEWS.main,
+    prevLoader: () => void 0,
+    currentLoader: () => void 0
   },
   track: {
     index: 0,
     isPlaying: false,
-  },
-  loadTracks: async function (index) {
-    const tracks = setPlaylist(index)
-    this.playlist.index = index
-    this.tracks = tracks
   }
 }

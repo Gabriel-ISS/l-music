@@ -1,26 +1,33 @@
 import { $, $all, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
 import { getListOfPlaylist } from '../libs/db-service.js'
 import store from '../store.js'
+import { moveToView } from '../libs/views-manager.js';
+import { VIEWS } from '../constants.js';
+import playlistLoader from './track-list.js';
 
-const $mainMenu = $('main-menu');
 
 const playlistTemplate = await getTemplate('../../templates/components/playlist')
 
-await setPlaylists()
+const $mainMenu = $('main-menu');
 
-const $playlists = $all('.playlist')
-const $playlistButtons = $all('.playlist>button')
 
-$playlists.forEach(playlist => {
-  playlist.addEventListener('click', showPlaylist)
-})
-$playlistButtons.forEach(btn => {
-  btn.addEventListener('click', removePlaylist)
-})
-
-async function setPlaylists() {
+await mainMenuLoader()
+export default async function mainMenuLoader() {
   const playlists = await getListOfPlaylist()
   insertMany(Playlist, playlists, $mainMenu, true)
+
+  // add events
+  const $playlists = $all('.playlist')
+  const $playlistButtons = $all('.playlist>button')
+  $playlists.forEach(playlist => {
+    playlist.addEventListener('click', showPlaylist)
+  })
+  $playlistButtons.forEach(btn => {
+    btn.addEventListener('click', removePlaylist)
+  })
+
+  // return main id
+  return $mainMenu
 }
 
 function Playlist(data, index) {
@@ -28,8 +35,13 @@ function Playlist(data, index) {
 }
 
 async function showPlaylist(e) {
-  store.views.setNew('playlist')
-  store.loadTracks(e.target.getAttribute('data-index'))
+  const playlistIndex = e.currentTarget.getAttribute('data-index')
+  moveToView(
+    VIEWS.playlist,
+    async () => await playlistLoader(playlistIndex),
+    $mainMenu,
+    mainMenuLoader
+  )
 }
 
 function removePlaylist(e) {
