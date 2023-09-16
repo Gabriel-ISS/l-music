@@ -1,0 +1,17 @@
+#main-menu{
+    display: grid;
+    gap: .5em;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+.playlist{
+    background-image: url("https://c8.alamy.com/compes/pe2fm5/cartoon-vectores-icono-musica-de-estilo-comic-nota-sonido-firmar-ilustracion-pictograma-melody-music-business-efecto-splash-concepto-pe2fm5.jpg");
+    background-position: center;
+    background-size: contain;
+    aspect-ratio: 1;
+    width: 100%;
+    border: 3px var(--primary-color) solid;
+    display: grid;
+    place-items: center;
+    border-radius: .5rem;
+}

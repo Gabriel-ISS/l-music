@@ -1,11 +1,11 @@
 #form{
     display: grid;
-    width: 100%;
+    width: calc(100% - 2rem);
     gap: 1.5em;
+    margin: 1rem;
 }
 
-.input-grup{
+.input-group{
     display: grid;
-    width: 100%;
     gap: 1.2em;
 }
