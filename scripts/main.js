@@ -15,7 +15,7 @@ async function injectTemplates(...templates) {
   $app.innerHTML = html
 }
 
-await injectTemplates('main-menu', 'track-list', 'player', 'form', 'simple-player')
+await injectTemplates('navbar', 'main-menu', 'track-list', 'player', 'form', 'simple-player')
 import('./controllers/main-menu.js')
 import('./controllers/player.js')
 import('./controllers/track-list.js')

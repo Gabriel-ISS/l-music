@@ -1,42 +1,28 @@
+import { $, $all, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
 import { getPlaylist } from '../libs/db-service.js'
-import {$, insertMany} from '../libs/html-management.js'
+//import { isPlaying, playTrack } from './player.js'
 
 const $trackList = $('track-list')
 
-let tracks;
+const trackTemplate = await getTemplate('../../templates/components/track')
 
-async function setTracks() {
-  /* tracks = await getPlaylist(playlist)
-  insertMany(Track, tracks, $trackList)
-   */
+await setPlaylist()
+
+const $tracks = $all('.track')
+$tracks.forEach((track) => {
+  track.addEventListener('click', playTrack)
+})
+
+async function setPlaylist() {
+  const tracks = await getPlaylist()
+  console.log(tracks)
+  insertMany(Track, tracks, $trackList, true)
 }
 
-setTracks()
-
-/**
- * 
- * @param {object} track json data
- * @param {string} track.name
- * @param {string} track.artist
- * @param {string} track.image
- * @param {string} track.path
- */
-function Track({ name, artist, image, path }, index) {
-  return `
-    <article class='track'>
-      <div>
-        <button class="play-track" data-track="${path}">Reproducir</button>
-        <img src="${image}"></img>
-      </div>
-      <div>
-        <span>${name} - ${artist}<span>
-        <a href="edit.html">Editar</a>
-        <button>Eliminar</button>
-      </div>
-    </article>
-  `
+function Track(data, index) {
+  return fillComponent(trackTemplate, { ...data, index })
 }
 
-function removeTrack() {
-
+function playTrack(e) {
+  
 }

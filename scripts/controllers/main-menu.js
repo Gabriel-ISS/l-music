@@ -1,21 +1,18 @@
-import { $, $all, $first, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
+import { $, $all, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
 import { getListOfPlaylist } from '../libs/db-service.js'
 
 const $mainMenu = $('main-menu');
 
 const playlistTemplate = await getTemplate('../../templates/components/playlist')
 
-setPlaylists()
+await setPlaylists()
 
-const $playlistButtons = $all('.playlist')
-console.log($playlistButtons)
-$playlistButtons.forEach((element, index) => {
-  console.log(element)
-  element.addEventListener('click', (e) => {
-    removePlaylist(e, index)
+const $playlistButtons = $all('.playlist>button')
+$playlistButtons.forEach((track) => {
+  track.addEventListener('click', e => {
+    removePlaylist(e)
   })
 })
-
 
 async function setPlaylists() {
   const playlists = await getListOfPlaylist()
@@ -26,10 +23,10 @@ function Playlist(data, index) {
   return fillComponent(playlistTemplate, { ...data, index })
 }
 
-function removePlaylist(e, index) {
+function removePlaylist(e) {
   const isSure = confirm('¿Estas seguro de eliminar la playlist?')
   if (isSure) {
-    const $playlist = $first(`.playlist[data-index]=${index}`)
-    
+    // TODO: Eliminar del json
+    e.target.parentElement.remove()
   }
 }

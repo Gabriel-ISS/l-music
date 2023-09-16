@@ -26,8 +26,10 @@ $volumeSlider.addEventListener('change', setVolume)
 
 const $audioController = document.createElement('audio');
 
-let trackIndex = 0;
-let isPlaying = false;
+export const state = {
+  trackIndex: 0,
+  isPlaying: false
+}
 let updateTimer;
 
 
@@ -52,7 +54,7 @@ const trackList = [
   },
 ]
 
-loadTrack(trackIndex)
+loadTrack(state.trackIndex)
 
 function setBackgroundColor() {
   /* Esto debería cambiar la imagen de fondo 
@@ -88,34 +90,34 @@ function resetTrack() {
 }
 
 function playPauseTrack() {
-  if (!isPlaying) playTrack()
+  if (!state.isPlaying) playTrack()
   else pauseTrack()
 }
 
 function playTrack() {
   $audioController.play()
-  isPlaying = true
+  state.isPlaying = true
   $playPauseBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>'
 }
 
 function pauseTrack() {
   $audioController.pause()
-  isPlaying = false
+  state.isPlaying = false
   $playPauseBtn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>'
 }
 
 function nextTrack() {
-  if (trackIndex < trackList.length - 1) trackIndex++;
-  else trackIndex = 0;
-  loadTrack(trackIndex);
+  if (state.trackIndex < trackList.length - 1) state.trackIndex++;
+  else state.trackIndex = 0;
+  loadTrack(state.trackIndex);
   playTrack();
 }
 
 function prevTrack() {
-  if (trackIndex > 0)
-    trackIndex -= 1;
-  else trackIndex = trackList.length;
-  loadTrack(trackIndex);
+  if (state.trackIndex > 0)
+    state.trackIndex -= 1;
+  else state.trackIndex = trackList.length;
+  loadTrack(state.trackIndex);
   playTrack();
 }
 
