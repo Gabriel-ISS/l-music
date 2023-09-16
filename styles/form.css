@@ -4,5 +4,5 @@
     min-height: calc(100vh - var(--navbar-height));
     gap: 1.5em;
     margin: 1rem;
-    align-items: start;
+    align-content: start;
 }
