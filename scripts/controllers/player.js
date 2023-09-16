@@ -4,6 +4,10 @@ Basado en https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
 
 import { $ } from '../libs/html-management.js'
 import store from '../store.js'
+import { updateSimplePlayer } from './simple-player.js';
+
+
+const $simplePlayer = $("simple-player")
 
 const $nowPlaying = $("now-playing");
 const $trackImage = $("track-image");
@@ -60,6 +64,9 @@ export default function playerLoader(trackIndex) {
   updateTimer = setInterval(updatePlayerTime, 1000)
   $audioController.addEventListener("ended", nextTrack)
   setBackgroundColor()
+  
+  updateSimplePlayer(track)
+
 }
 
 function resetTrack() {
