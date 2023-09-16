@@ -1,6 +1,7 @@
 [
   {
     "name": "Mi lista",
+    "image":"https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
     "tracks": [
       {
         "name": "Night Owl",
