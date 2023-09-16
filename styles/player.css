@@ -68,7 +68,7 @@
   -moz-appearance: none;
   appearance: none;
   height: 5px;
-  background: black;
+  background: var(--bg-color);
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
@@ -91,7 +91,7 @@
   appearance: none;
   width: 15px;
   height: 15px;
-  background: white;
+  background: var(--secondary-color);
   cursor: pointer;
   border-radius: 50%;
 }

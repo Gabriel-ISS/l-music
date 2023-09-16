@@ -6,7 +6,7 @@
     gap: 1.5em;
     margin: 1rem;
 }
-
+/* TODO: esto es el color de los botones del navbar, mover esto al lugar que corresponda */
 .input-group{
     display: grid;
     gap: 1.2em;
