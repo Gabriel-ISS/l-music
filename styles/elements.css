@@ -6,6 +6,7 @@
   --bg--color3: #ff5722;
   --text-color: #fff;
   --bg-color-sprite:0,0,0;
+  --navbar-height: 3.5rem;
  
 
 }
@@ -46,7 +47,7 @@ input[type="text"]{
 }
 
 nav {
-
+  height: var(--navbar-height) ;
   position: sticky; 
   top: 0;
   border-bottom: var(--primary-color) solid 2px;

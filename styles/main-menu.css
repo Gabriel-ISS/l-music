@@ -1,4 +1,5 @@
 #main-menu {
+    min-height: calc(100vh - var(--navbar-height));
     display: grid;
     gap: .5em;
     grid-template-columns: 1fr 1fr;

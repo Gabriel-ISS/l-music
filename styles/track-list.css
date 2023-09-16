@@ -8,6 +8,7 @@
 }
 
 #track-list{
+  min-height: calc(100vh - var(--navbar-height));
   background-image: url("https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250");
   position: relative;
   background-size: cover;
