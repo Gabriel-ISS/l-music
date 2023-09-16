@@ -5,16 +5,6 @@
 @import url('./form.css');
 @import url('./player.css');
 
-
-:root {
-  --primary-color: orange;
-  --secondary-color: #fff;
-  --bg-color: black;
-  --bg-color2: #232323;
-  --text-color: #fff;
-
-}
-
 .fa-arrow-left {
   margin-right: auto; 
 }

@@ -1,10 +1,31 @@
 .track {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  background-color: rgba(var(--bg-color-sprite),.5);
+  z-index: 2;
+  position: relative;
+}
+
+#track-list{
+  background-image: url("https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250");
+  position: relative;
+  background-size: cover;
+}
+
+#track-list::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
 }
 
 .track img {
   max-width: 4rem;
+  aspect-ratio: 1;
 }
 
 .track div:first-child {
