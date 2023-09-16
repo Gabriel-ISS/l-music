@@ -34,8 +34,6 @@ export async function moveToView(view, loader, $currentView = $(store.views.curr
   store.views.currentLoader = loader
 
   const currentView = $currentView.getAttribute('id')
-  if (currentView == VIEWS.main && currentView == VIEWS.playlist) {
-    store.views.prev = currentView
-  }
+  store.views.prev = currentView
   store.views.current = view
 }
