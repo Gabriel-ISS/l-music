@@ -13,7 +13,7 @@ const $simplePlayer = $('simple-player')
  */
 export async function moveToView(view, loader, $currentView = $(store.views.current), currentLoader = store.views.currentLoader) {
   const $toReplaceView = $currentView
-  console.log(loader, currentLoader)
+  //console.log(loader, currentLoader)
   const $newView = await loader()
 
   if (!$newView) throw new Error("New view loader returns undefined")
