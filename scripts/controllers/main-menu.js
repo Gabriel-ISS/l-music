@@ -28,6 +28,7 @@ function Playlist(data, index) {
 }
 
 async function showPlaylist(e) {
+  store.views.setNew('playlist')
   store.loadTracks(e.target.getAttribute('data-index'))
 }
 
