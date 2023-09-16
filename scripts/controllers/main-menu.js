@@ -7,9 +7,13 @@ const playlistTemplate = await getTemplate('../../templates/components/playlist'
 
 setPlaylists()
 
-const $playlistButtons = $all('.playlist>button')
-$playlistButtons.forEach(element => {
-  element.addEventListener('click')
+const $playlistButtons = $all('.playlist')
+console.log($playlistButtons)
+$playlistButtons.forEach((element, index) => {
+  console.log(element)
+  element.addEventListener('click', (e) => {
+    removePlaylist(e, index)
+  })
 })
 
 
@@ -18,13 +22,14 @@ async function setPlaylists() {
   insertMany(Playlist, playlists, $mainMenu, true)
 }
 
-async function Playlist(name, index) {
+function Playlist(name, index) {
   return fillComponent(playlistTemplate, { name, index })
 }
 
-function removePlaylist(index) {
+function removePlaylist(e, index) {
   const isSure = confirm('¿Estas seguro de eliminar la playlist?')
   if (isSure) {
     const $playlist = $first(`.playlist[data-index]=${index}`)
+    
   }
 }

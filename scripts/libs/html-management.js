@@ -29,6 +29,7 @@ export async function getTemplate(templatePath) {
 export function insertMany(Component, data, $element, includeIndex = false) {
   $element.innerHTML = data.reduce((html, track, index) => {
     html += includeIndex ? Component(track, index) : Component(track)
+    return html
   }, '')
 }
 
