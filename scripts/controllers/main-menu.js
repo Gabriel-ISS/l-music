@@ -1,7 +1,6 @@
 import { $, $all, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
 import { getListOfPlaylist } from '../libs/db-service.js'
-import { getPlaylist } from '../libs/db-service.js'
-import { state } from '../store.js'
+import store from '../store.js'
 
 const $mainMenu = $('main-menu');
 
@@ -16,9 +15,7 @@ $playlists.forEach(playlist => {
   playlist.addEventListener('click', showPlaylist)
 })
 $playlistButtons.forEach(btn => {
-  btn.addEventListener('click', e => {
-    removePlaylist(e)
-  })
+  btn.addEventListener('click', removePlaylist)
 })
 
 async function setPlaylists() {
@@ -31,10 +28,11 @@ function Playlist(data, index) {
 }
 
 async function showPlaylist(e) {
-  state.loadTracks(e.target.getAttribute('data-index'))
+  store.loadTracks(e.target.getAttribute('data-index'))
 }
 
 function removePlaylist(e) {
+  e.preventDefault()
   const isSure = confirm('¿Estas seguro de eliminar la playlist?')
   if (isSure) {
     // TODO: Eliminar del json

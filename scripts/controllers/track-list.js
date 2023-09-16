@@ -1,7 +1,7 @@
 import { $, $all, insertMany, getTemplate, fillComponent } from '../libs/html-management.js'
 import { playTrack } from './player.js'
 import { getPlaylist } from "../libs/db-service.js"
-import { state } from '../store.js'
+import store from '../store.js'
 
 const $trackList = $('track-list')
 
@@ -24,6 +24,6 @@ function Track(data, index) {
 }
 
 function loadAndPlayTrack() {
-  if (state.isPlaying) return;
+  if (store.track.isPlaying) return;
   //playTrack()
 }

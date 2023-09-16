@@ -16,6 +16,9 @@ async function injectTemplates(...templates) {
 }
 
 await injectTemplates('navbar', 'main-menu', 'track-list', 'player', 'form', 'simple-player')
+import('./controllers/navbar.js')
 import('./controllers/main-menu.js')
-import('./controllers/player.js')
 import('./controllers/track-list.js')
+import('./controllers/player.js')
+import('./controllers/form.js')
+import('./controllers/simple-player.js')

@@ -3,7 +3,7 @@ Basado en https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
 */
 
 import { $ } from '../libs/html-management.js'
-import { state } from '../store.js'
+import store from '../store.js'
 
 const $nowPlaying = $("now-playing");
 const $trackImage = $("track-image");
@@ -29,7 +29,7 @@ const $audioController = document.createElement('audio');
 
 let updateTimer;
 
-loadTrack(state.trackIndex)
+loadTrack(store.track.index)
 
 function setBackgroundColor() {
   /* Esto debería cambiar la imagen de fondo 
@@ -43,12 +43,12 @@ function loadTrack(trackIndex) {
   clearInterval(updateTimer)
   resetTrack()
 
-  if (!state.tracks.length) {
+  if (!store.playlist.tracks.length) {
     console.info('Tracks not found')
     return;
   }
 
-  const track = state.tracks[trackIndex]
+  const track = store.playlist.tracks[trackIndex]
 
   $audioController.src = track.path
   $audioController.load()
@@ -56,7 +56,7 @@ function loadTrack(trackIndex) {
   $trackImage.style.backgroundImage = `url(${track.image})`
   $trackName.innerHTML = track.name
   $trackArtist.innerHTML = track.artist
-  $nowPlaying.innerHTML = `Reproduciendo pista ${trackIndex + 1} de ${state.tracks.length}`
+  $nowPlaying.innerHTML = `Reproduciendo pista ${trackIndex + 1} de ${store.playlist.tracks.length}`
 
   updateTimer = setInterval(updatePlayerTime, 1000)
   $audioController.addEventListener("ended", nextTrack)
@@ -70,34 +70,34 @@ function resetTrack() {
 }
 
 function playPauseTrack() {
-  if (!state.isPlaying) playTrack()
+  if (!store.track.isPlaying) playTrack()
   else pauseTrack()
 }
 
 export function playTrack() {
   $audioController.play()
-  state.isPlaying = true
+  store.track.isPlaying = true
   $playPauseBtn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>'
 }
 
 function pauseTrack() {
   $audioController.pause()
-  state.isPlaying = false
+  store.track.isPlaying = false
   $playPauseBtn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>'
 }
 
 function nextTrack() {
-  if (state.trackIndex < state.tracks.length - 1) state.trackIndex++;
-  else state.trackIndex = 0;
-  loadTrack(state.trackIndex);
+  if (store.track.index < store.playlist.tracks.length - 1) store.track.index++;
+  else store.track.index = 0;
+  loadTrack(store.track.index);
   playTrack();
 }
 
 function prevTrack() {
-  if (state.trackIndex > 0)
-    state.trackIndex -= 1;
-  else state.trackIndex = state.tracks.length;
-  loadTrack(state.trackIndex);
+  if (store.track.index > 0)
+    store.track.index -= 1;
+  else store.track.index = store.playlist.tracks.length;
+  loadTrack(store.track.index);
   playTrack();
 }
 
