@@ -1,4 +1,4 @@
-const dbPromise = fetch('/public/db.json')
+const dbPromise = fetch('/db.json')
   .then(res => res.json())
   .catch(e => {
     console.log(e)
